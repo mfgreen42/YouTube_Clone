@@ -6,6 +6,6 @@ from django.db import models
 
 
 class Reply(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    comment = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name= 'user')
+    comment = models.ForeignKey(User, on_delete=models.CASCADE, related_name= 'comment')
     text = models.CharField(max_length = 255)

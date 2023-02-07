@@ -3,5 +3,6 @@ from . import views
 
 
 urlpatterns = {
-    path('all/', views.get_comments_by_video),
+    path('', views.video_comments),
+    path('pk/', views.get_comments_by_video)
 }

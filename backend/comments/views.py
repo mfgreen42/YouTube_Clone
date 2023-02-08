@@ -20,23 +20,22 @@ def video_comments(request):
 
 @api_view(['GET'])
 @permission_classes([AllowAny])
-def get_comments_by_video(request, pk):
-    comments = get_list_or_404(Comment, pk=pk)
-    if request.method == 'GET':
-        serializer = CommentSerializer(comments) 
-        return Response(serializer.data)       
+def get_comments_by_video(request, video_id):
+    comments = Comment.objects.filter(video_id=video_id)
+    serializer = CommentSerializer(comments, many=True) 
+    return Response(serializer.data)       
     
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def user_comments(request):
+def user_comments(request, video_id):
     print(
-        'User ', f"{request.user.id} {request.user.email} {request.user.username}")
+        'User ', f"{request.user.id} {request.user.username}")
     if request.method == 'POST':
         serializer = CommentSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save(user=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 

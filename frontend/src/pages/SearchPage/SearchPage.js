@@ -4,6 +4,7 @@ import axios from "axios";
 
 import useAuth from "../../hooks/useAuth";
 import useCustomForm from "../../hooks/useCustomForm";
+import { Link } from 'react-router-dom'
 
 let initialValues = {
 
@@ -41,6 +42,7 @@ const SearchPage = () => {
                 />
             </label>
             <button>Search Videos</button>
+            <Link to='/'>Home Page</Link>
         </form>
     )
     }

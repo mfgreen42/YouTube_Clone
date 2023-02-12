@@ -7,8 +7,8 @@ import useAuth from "../../hooks/useAuth";
 const VideoPage = () => {
     const [user, token] = useAuth()
     const [videos, setVideos] = useState([])
-    console.log('user',user.name)
-    console.log(token)
+    console.log('Video Page user',user.name)
+    console.log('Video Page Token',token)
 
 
     return ( 

@@ -30,7 +30,7 @@ function App() {
         />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/search" element={<PrivateRoute><SearchPage /></PrivateRoute>}/>
+        <Route exact path="/search" element={<PrivateRoute><SearchPage /></PrivateRoute> }/>
       </Routes>
       <Footer />
     </div>

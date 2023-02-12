@@ -2,6 +2,7 @@ import React from "react";
 // import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import VideoPage from "../../components/VideoPage/VideoPage";
+import { Link } from "react-router-dom"
 
 // import axios from "axios";
 
@@ -11,8 +12,8 @@ const HomePage = () => {
   //TODO: Add an AddCars Page to add a car for a logged in user's garage
   const [user, token] = useAuth();
   // const [cars, setCars] = useState([]);
-  // console.log(token)
-  // console.log(user)
+  console.log('Home Page',token)
+  console.log('Home Page',user)
 
 
   // useEffect(() => {
@@ -46,7 +47,7 @@ const HomePage = () => {
   return (
     <div className="container">
       <h1>Home Page for {user.username}!</h1>
-      {/* <link to="/search">Search For Videos</link> */}
+      <Link to="/search">Search Videos</Link>
       <VideoPage/>
       {/* {cars &&
         cars.map((car) => (

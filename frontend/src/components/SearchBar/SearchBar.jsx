@@ -1,42 +1,53 @@
 import React from "react";
-import { useState } from "react";
-import { useAuth } from "../../hooks/useAuth"
-
-
-
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 
 
 const SearchBar = () => {
 
-    const [user, token] = useAuth()
     const [videos, setVideos] = useState([])
+    const [searchTerm, setSearchTerm] = useState('');
+    const [filteredVideos, setFilteredVideos] = useState([]);
 
+    useEffect(() => {
+        async function getVidoes() {
+          try {
+            const response = await axios.get('https://jsonplaceholder.typicode.com/users?maxResults=6');
+            setVideos(response.data);
+          } catch (error) {
+            console.error(error);
+          }
+    }
 
+      getVidoes();
+},[])
 
-    return ( 
-        <div>
-        <form>
-        <label>
-            Search:
-            <input
-            type= 'text' 
-            name = 'search'
-            />
-        </label>
-        <button >Search Videos</button>
-        </form>
-        <ol>
-            <li> </li>
-            <li>Now</li>
-            <li>This</li>
-            <li>Isn't</li>
-            <li>Working</li>
-        </ol>
+const handleSearch = () => {
+    const filtered = videos.filter(video =>
+      video.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredVideos(filtered);
+  };
+
+  return (
+    <div>
+      <input type="text" value={searchTerm} onChange={e => setSearchTerm(e.target.value)} />
+      <button onClick={handleSearch}>Search</button>
+      <button onClick={() => setSearchTerm('')}>Reset Search</button>
+      <ul id="video-list">
+        {filteredVideos.map(videos => (
+          <li key={videos.id}>{videos.name} ({videos.email})</li>
+        ))}
+      </ul>
     </div>
-
-     );
+  );
 }
+
+
+
+     
+
  
 export default SearchBar;
 

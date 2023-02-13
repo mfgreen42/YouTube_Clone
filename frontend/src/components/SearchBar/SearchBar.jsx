@@ -1,63 +1,142 @@
+// import React from "react";
+// import { useState, useEffect } from "react";
+// import axios from "axios";
+// import { KEY } from "../../localKey";
+// import VideoPage from "../../pages/VideoPage/VideoPage";
+
+// const SearchBar = () => {
+//   const [videos, setVideos] = useState([]);
+//   const [searchTerm, setSearchTerm] = useState("");
+//   const [searchClicked, setSearchClicked] = useState(false);
+//   const [selectedVideo, setSelectedVideo] = useState(null);
+
+//   useEffect(() => {
+//     async function getVidoes() {
+//       try {
+//         const response = await axios.get(
+//           `https://www.googleapis.com/youtube/v3/search?q=${searchTerm}&key=${KEY}&part=snippet&type =video&maxResults=6`
+//         );
+//         setVideos(response.data.items);
+//       } catch (error) {
+//         console.error(error);
+//       }
+//     }
+
+//     if (searchClicked) {
+//       getVidoes();
+//     }
+//   }, [searchTerm, searchClicked]);
+
+//   function handleClick(id) {
+//     setSelectedVideo(id);
+//   }
+
+//   // const handleSearch = () => {
+//   //     const filtered = videos.filter(video =>
+//   //       video.name.toLowerCase().includes(searchTerm.toLowerCase())
+//   //     );
+//   //     setVideos(filtered);
+//   //   };
+
+//   return (
+//     <div>
+//       <input
+//         type="text"
+//         value={searchTerm}
+//         onChange={(e) => setSearchTerm(e.target.value)}
+//       />
+//       <button onClick={() => setSearchClicked(true)}>Search</button>
+//       <h2>Search Results</h2>
+//       <div id="video-grid">
+//         {videos.map((video) => (
+//           <ol>
+//             <li>
+//               <a
+//                 key={video.id.videoId}
+//                 onClick={() => handleClick(video.id.videoId)}
+//                 target="_blank"
+//               >
+//                 <img
+//                   src={video.snippet.thumbnails.default.url}
+//                   alt={video.snippet.title}
+//                 />
+//                 <p>{video.snippet.title}</p>
+//               </a>
+//             </li>
+//           </ol>
+//         ))}
+//       </div>
+//       <VideoPage videos={videos} selectedVideo={selectedVideo} />
+//     </div>
+//   );
+// };
+
+// export default SearchBar;
+
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
-
-
+import { KEY } from "../../localKey";
+import VideoPage from "../../pages/VideoPage/VideoPage";
 
 const SearchBar = () => {
+  const [videos, setVideos] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchClicked, setSearchClicked] = useState(false);
+  const [selectedVideo, setSelectedVideo] = useState(null);
 
-    const [videos, setVideos] = useState([])
-    const [searchTerm, setSearchTerm] = useState('');
-    const [searchClicked, setSearchClicked] = useState(false);
-    const [selectedVideo, setSelectedVideo] = useState(null);
-
-
-
-    useEffect(() => {
-        async function getVidoes() {
-          try {
-            const response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchTerm}&key=AIzaSyA6HGDmTmHv29DCMk4vhNy4siE7wRJwH1I&part=snippet&type =video&maxResults=6`);
-            setVideos(response.data.items);
-            console.log('search has ran')
-          } catch (error) {
-            console.error(error);
-          }
+  useEffect(() => {
+    async function getVidoes() {
+      try {
+        const response = await axios.get(
+          `https://www.googleapis.com/youtube/v3/search?q=${searchTerm}&key=${KEY}&part=snippet&type =video&maxResults=6`
+        );
+        setVideos(response.data.items);
+      } catch (error) {
+        console.error(error);
+      }
     }
 
-      if (searchClicked){ 
+    if (searchClicked) {
       getVidoes();
-      }
-},[searchTerm, searchClicked])
+    }
+  }, [searchTerm, searchClicked]);
 
-// const handleSearch = () => {
-//     const filtered = videos.filter(video =>
-//       video.name.toLowerCase().includes(searchTerm.toLowerCase())
-//     );
-//     setVideos(filtered);
-//   };
+  function handleClick(id) {
+    setSelectedVideo(id);
+  }
 
   return (
     <div>
-      <h2>Search Results</h2>
-      <input type="text" value={searchTerm} onChange={e => setSearchTerm(e.target.value)} />
+      <input
+        type="text"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
       <button onClick={() => setSearchClicked(true)}>Search</button>
+      <h2>Search Results</h2>
       <div id="video-grid">
-        {videos.map(video => (
-          <a key={video.id.videoId} href={`https://www.youtube.com/watch?v=${video.id.videoId}`} target="_blank">
-            <img src={video.snippet.thumbnails.default.url} alt={video.snippet.title} />
-            <p>{video.snippet.title}</p>
-          </a>
+        {videos.map((video) => (
+          <ol>
+            <li>
+              <a
+                key={video.id.videoId}
+                onClick={() => handleClick(video.id.videoId)}
+                target="_blank"
+              >
+                <img
+                  src={video.snippet.thumbnails.default.url}
+                  alt={video.snippet.title}
+                />
+                <p>{video.snippet.title}</p>
+              </a>
+            </li>
+          </ol>
         ))}
       </div>
+      <VideoPage videos={videos} selectedVideo={selectedVideo} />
     </div>
-    );
-}
+  );
+};
 
-
-
-     
-
- 
 export default SearchBar;
-
-

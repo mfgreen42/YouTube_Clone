@@ -1,6 +1,5 @@
 import React from "react";
 import useAuth from "../../hooks/useAuth";
-import VideoPage from "../../components/VideoPage/VideoPage";
 import { Link } from "react-router-dom"
 import SearchBar from "../../components/SearchBar/SearchBar";
 
@@ -14,9 +13,7 @@ const HomePage = () => {
   return (
     <div className="container">
       <h1>Home Page for {user.username}!</h1>
-      <Link to="/search">Search Videos</Link>
-      <VideoPage/>
-      <SearchBar token = {token} user = {user} />
+      <Link to="/search">Click here to search for your favorite videos</Link>
     </div>
   );
 };

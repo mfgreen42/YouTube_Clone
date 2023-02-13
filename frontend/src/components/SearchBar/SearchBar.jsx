@@ -60,7 +60,6 @@ const SearchBar = () => {
           </ol>
         ))}
       </div>
-      <VideoPage videos={videos} selectedVideo={selectedVideo} />
     </div>
   );
 };

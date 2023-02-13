@@ -2,7 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { KEY } from "../../localKey";
-import VideoPage from "../../pages/VideoPage/VideoPage";
+import { Link } from 'react-router-dom';
+
 
 const SearchBar = () => {
   const [videos, setVideos] = useState([]);
@@ -47,18 +48,18 @@ const SearchBar = () => {
         {videos.map((video) => (
           <ol>
             <li>
-              <a
+              <Link to='videopage/:id'>
                 key={video.id.videoId}
                 onClick={() => handleClick(video.id.videoId)}
                 target="_blank"
-              >
+              
                 <img
                   src={video.snippet.thumbnails.default.url}
                   alt={video.snippet.title}
                 />
                 <p>{video.snippet.title}</p>
                 <p>{video.snippet.description}</p>
-              </a>
+              </Link>
             </li>
           </ol>
         ))}

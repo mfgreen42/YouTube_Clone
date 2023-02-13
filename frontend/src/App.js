@@ -32,7 +32,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route exact path="/search" element={<PrivateRoute><SearchPage /></PrivateRoute> }/>
-        <Route exact path="/videopage/:id" element={<PrivateRoute><VideoPage /></PrivateRoute>}/>
+        <Route exact path="/videopage/: id" element={<PrivateRoute><VideoPage /></PrivateRoute>}/>
       </Routes>
       <Footer />
     </div>

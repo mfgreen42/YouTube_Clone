@@ -8,7 +8,9 @@ const VideoPage = () => {
       
   
   return (
+    <div>
     <VideoPlayer />
+    </div>
     )
   }
 

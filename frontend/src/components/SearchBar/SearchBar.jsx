@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { KEY } from "../../localKey";
 import { Link } from "react-router-dom";
-import VideoPlayer from "../VideoPlayer/VideoPlayer";
 
 const SearchBar = () => {
   const [videos, setVideos] = useState([]);
@@ -49,11 +48,11 @@ const SearchBar = () => {
           <ol>
             <li>
               <Link
-                to={`/videopage/${video.id.videoId}`} key={video.id.videoId}>
+                to={`/videopage/${video.id.videoId}`} key={video.id.videoId}
                 
               
-                key={video.id.videoId}
-                onClick={() => handleClick(video.id.videoId)}
+                // key={video.id.videoId}
+                onClick={() => handleClick(video.id.videoId)}>
                 <img
                   src={video.snippet.thumbnails.default.url}
                   alt={video.snippet.title}

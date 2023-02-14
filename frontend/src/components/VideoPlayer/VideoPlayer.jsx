@@ -15,7 +15,6 @@ const VideoPlayer = () => {
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         />
-            <RelatedVideos />
 
         <iframe
           width="350"

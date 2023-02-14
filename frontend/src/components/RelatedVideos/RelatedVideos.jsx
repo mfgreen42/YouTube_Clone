@@ -16,7 +16,6 @@ const RelatedVideos = () => {
         const response = await axios.get(
           `https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${videoId}&type=video&key=${KEY}&maxResults=5`
         );
-        debugger;
         console.log(response.data);
 
         setFindRelatedVideos(response.data.items);

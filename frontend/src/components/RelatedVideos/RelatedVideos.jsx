@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 const RelatedVideos = () => {
   const [findRelatedVideos, setFindRelatedVideos] = useState([]);
+  const [foundRelatedVideos, setFoundRelatedVideos] =useState([])
 
   let { videoId } = useParams();
 
@@ -14,7 +15,7 @@ const RelatedVideos = () => {
     async function getRelatedVidoes() {
       try {
         const response = await axios.get(
-          `https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${videoId}&type=video&key=${KEY}&maxResults=5`
+          `https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${videoId}&type=video&key=${KEY}&maxResults=5&part=snippet`
         );
         console.log(response.data);
 
@@ -26,17 +27,25 @@ const RelatedVideos = () => {
     }
     getRelatedVidoes();
 
-  }, [findRelatedVideos]);
-    console.log(findRelatedVideos)
+  }, []);
+
+
+
+    // function displayRelatedVideos(findRelatedVideos) {
+    //     let foundRelatedVideos = findRelatedVideos.map((video) => (
+            
+    //     ));
+    // }
 
   return (
     <div className="video-grid">
-      {Array.isArray(findRelatedVideos) &&
-        findRelatedVideos.map((video) => (
+      
+      {findRelatedVideos.map((video) => (
           <ol>
             <li>
-              <Link to={`/videopage/${video.id.videoId}/related/${videoId}`}>
-                {/* <img src={video.snippet.thumbnails.default.url} alt={video.snippet.title} /> */}
+              <Link to={`/videopage/${video.id.videoId}`} key={video.id.videoId}>
+                <img src={video.snippet.thumbnails.default.url} alt={video.snippet.title} />
+                <p>{video.id.videoId}</p>
               </Link>
             </li>
           </ol>

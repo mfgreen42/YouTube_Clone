@@ -1,5 +1,5 @@
 
-//this component maps over the comments for a video and displays them
+//this component maps over the comments and displays them
 
 
 const CommentList = (props) => {
@@ -10,7 +10,7 @@ const CommentList = (props) => {
         <div>
             {props.postComment.map((comment) => {
                 return (
-                    <div>
+                    <div key = {comment.id}>
                         <p>{comment.name}</p>
                         <p>{comment.comment}</p>
                         <hr></hr>

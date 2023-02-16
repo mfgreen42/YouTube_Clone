@@ -21,7 +21,7 @@ const VideoPage = () => {
     <div>
     <VideoPlayer videoId = {videoId} />
     <CommentForm videoId = {videoId} addNewComment = {addNewComment}/>
-    <CommentList postComment={postComments}/>
+    <CommentList postComment={postComments} videoId={videoId}/>
     <RelatedVideos videoId = {videoId} />
     </div>
     )

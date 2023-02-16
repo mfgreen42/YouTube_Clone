@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 
 //This component makes the comment box and handles the submit function
 const CommentForm = (props) => {
+    let videoId = useParams();
+
   const [comment, setComment] = useState("");
   const [name, setName] = useState("");
 
@@ -10,6 +13,7 @@ const CommentForm = (props) => {
     let newComment = {
         name: name,
         comment: comment,
+        videoId: videoId,
     };
 
     props.addNewComment(newComment);

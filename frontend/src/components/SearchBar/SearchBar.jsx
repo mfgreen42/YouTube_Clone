@@ -51,7 +51,6 @@ const SearchBar = () => {
                 to={`/videopage/${video.id.videoId}`} key={video.id.videoId}
                 
               
-                // key={video.id.videoId}
                 onClick={() => handleClick(video.id.videoId)}>
                 <img
                   src={video.snippet.thumbnails.default.url}

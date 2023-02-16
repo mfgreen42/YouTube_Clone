@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 
 const RelatedVideos = () => {
   const [findRelatedVideos, setFindRelatedVideos] = useState([]);
-  const [foundRelatedVideos, setFoundRelatedVideos] =useState([])
 
   let { videoId } = useParams();
 
@@ -31,11 +30,6 @@ const RelatedVideos = () => {
 
 
 
-    // function displayRelatedVideos(findRelatedVideos) {
-    //     let foundRelatedVideos = findRelatedVideos.map((video) => (
-            
-    //     ));
-    // }
 
   return (
     <div className="video-grid">
@@ -45,7 +39,7 @@ const RelatedVideos = () => {
             <li>
               <Link to={`/videopage/${video.id.videoId}`} key={video.id.videoId}>
                 <img src={video.snippet.thumbnails.default.url} alt={video.snippet.title} />
-                <p>{video.id.videoId}</p>
+                <p>{video.snippet.title}</p>
               </Link>
             </li>
           </ol>

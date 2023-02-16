@@ -19,7 +19,6 @@ const RelatedVideos = () => {
         console.log(response.data);
 
         setFindRelatedVideos(response.data.items);
-        debugger;
       } catch (error) {
         console.error(error);
       }

@@ -8,10 +8,11 @@ const CommentForm = (props) => {
   function handleSubmit(event) {
     event.preventDefault();
     let newComment = {
-      comment: comment,
+        name: name,
+        comment: comment,
     };
 
-    setComment(newComment);
+    props.addNewComment(newComment);
   }
 
   return (

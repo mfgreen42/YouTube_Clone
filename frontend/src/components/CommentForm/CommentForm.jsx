@@ -13,7 +13,7 @@ const CommentForm = (props) => {
     let newComment = {
         name: name,
         comment: comment,
-        videoId: videoId,
+        videoId: {videoId},
     };
 
     props.addNewComment(newComment);

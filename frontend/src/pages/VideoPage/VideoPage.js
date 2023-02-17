@@ -9,12 +9,14 @@ import { useState } from "react";
 const VideoPage = () => {
   let { videoId } = useParams();
 
-  const [postComments, setPostComments] =useState([{name: 'mfgreen', comment: 'This video is great!'}])
+  const [postComments, setPostComments] =useState([{name: 'mfgreen', comment: 'This video is great!', videoId}])
 
   function addNewComment(postComment,) {
     let tempPost = [postComment, ...postComments];
     setPostComments(tempPost);
   }
+
+
       
   
   return (

@@ -5,8 +5,10 @@
 const CommentList = (props) => {
 
 
+
     return ( 
     <div className="table">
+        
         <div>
             {props.postComment.map((comment) => {
                 return (

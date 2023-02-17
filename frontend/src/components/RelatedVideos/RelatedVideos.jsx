@@ -15,7 +15,7 @@ const RelatedVideos = () => {
     async function getRelatedVidoes() {
       try {
         const response = await axios.get(
-          `https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${videoId}&type=video&key=${KEY}&maxResults=5&part=snippet`
+          `https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${videoId}&type=video&key=${KEY}&maxResults=6&part=snippet`
         );
         console.log(response.data);
 
@@ -29,7 +29,7 @@ const RelatedVideos = () => {
   }, []);
 
   return (
-    <div className="video-grid">
+    <div >
       <div className="video-player">
         {/* Code for the video player */}
       </div>
@@ -40,8 +40,8 @@ const RelatedVideos = () => {
         <h2 className="h2-results">Related Videos</h2>
         <div className="video-grid">
           {findRelatedVideos.map((video) => (
-            <ul key={video.id.videoId}>
-              <li className="related-video-link">
+            <ul className="related-video-link" key={video.id.videoId}>
+              <li >
                 <Link to={`/videopage/${video.id.videoId}`}>
                   <img src={video.snippet.thumbnails.default.url} alt={video.snippet.title} />
                   <p>{video.snippet.title}</p>

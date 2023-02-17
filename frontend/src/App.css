@@ -79,9 +79,10 @@ input {
 }
 
 .h2-results {
+  display: flex;
   margin-top: 20px;
+  justify-content: space-between;
 }
-
 
 .video-container {
   display: flex;
@@ -92,14 +93,10 @@ input {
 
 
 .video-grid {
-  display:flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-  align-items: center;
-
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
 }
-
 
 p {
   font-size: small;
@@ -107,12 +104,24 @@ p {
 
 .video-player {
   display: flex;
+  justify-content: center;
 }
-
 .comment-form {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 15px;display: flex;
+}
+
+.table {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;display: flex;
+
+}
+
+.p-comment {
+  font-size: medium;
 }
 

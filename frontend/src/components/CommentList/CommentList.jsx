@@ -13,8 +13,9 @@ const CommentList = (props) => {
             {props.postComment.map((comment) => {
                 return (
                     <div key = {comment.id}>
-                        <p>{comment.name}</p>
-                        <p>{comment.comment}</p>
+                        <hr></hr>
+                        <p className="p-comment">{comment.name}</p>
+                        <p className="p-comment">{comment.comment}</p>
                         <hr></hr>
                     </div>
                 )

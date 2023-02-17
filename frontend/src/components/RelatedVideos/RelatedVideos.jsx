@@ -4,6 +4,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { KEY } from "../../localKey";
 import { Link } from "react-router-dom";
+import "../../App.css"
 
 const RelatedVideos = () => {
   const [findRelatedVideos, setFindRelatedVideos] = useState([]);
@@ -28,15 +29,15 @@ const RelatedVideos = () => {
   }, []);
 
   return (
-    <div className="video-container">
+    <div className="video-grid">
       <div className="video-player">
         {/* Code for the video player */}
       </div>
       <div className="comment-form">
         {/* Code for the comment form */}
       </div>
-      <div className="related-videos">
-        <h2>Related Videos</h2>
+      <div className="centered-div">
+        <h2 className="h2-results">Related Videos</h2>
         <div className="video-grid">
           {findRelatedVideos.map((video) => (
             <ul key={video.id.videoId}>

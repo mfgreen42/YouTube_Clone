@@ -20,7 +20,7 @@ const CommentForm = (props) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="comment-form" onSubmit={handleSubmit}>
       <div>
         <div>
           <label>Name:</label>

@@ -4,7 +4,7 @@ const VideoPlayer = (props) => {
 
   return (
     <div>
-      <div>
+      <div className="video-player">
         <iframe
           width="350"
           height="200"

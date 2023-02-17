@@ -105,3 +105,14 @@ p {
   font-size: small;
 }
 
+.video-player {
+  display: flex;
+}
+
+.comment-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;display: flex;
+}
+

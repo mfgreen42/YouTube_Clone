@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { KEY } from "../../localKey";
 import { Link } from "react-router-dom";
+import "../../App.css"
 
 const SearchBar = () => {
   const [videos, setVideos] = useState([]);
@@ -38,15 +39,16 @@ const SearchBar = () => {
     <div>
       <input
         type="text"
+        placeholder="Search"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
-      <button onClick={() => setSearchClicked(true)}>Search</button>
-      <h2>Search Results</h2>
+      <button className="search-button" onClick={() => setSearchClicked(true)}>Search Videos</button>
+      <h2 className="h2-results">Search Results</h2>
       <div className="video-grid">
         {videos.map((video) => (
-          <ol>
-            <li>
+          <ul>
+            <li className="card">
               <Link
                 to={`/videopage/${video.id.videoId}`} key={video.id.videoId}
                 
@@ -57,10 +59,10 @@ const SearchBar = () => {
                   alt={video.snippet.title}
                 />
                 <p>{video.snippet.title}</p>
-                <p>{video.snippet.description}</p>
+                {/* <p>{video.snippet.description}</p> */}
               </Link>
             </li>
-          </ol>
+          </ul>
         ))}
       </div>
     </div>

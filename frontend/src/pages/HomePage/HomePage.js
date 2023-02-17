@@ -1,7 +1,7 @@
 import React from "react";
 import useAuth from "../../hooks/useAuth";
 import { Link } from "react-router-dom";
-import "./HomePage.css";
+import "../../App.css";
 
 const HomePage = () => {
   const [user, token] = useAuth();
@@ -12,7 +12,7 @@ const HomePage = () => {
   return (
     <div className="container">
       <h1>Home Page for {user.username}!</h1>
-      <Link to="/search">Click here to search for your favorite videos</Link>
+      <Link to="/search" className="link">Click here to search for your favorite videos</Link>
     </div>
   );
 };

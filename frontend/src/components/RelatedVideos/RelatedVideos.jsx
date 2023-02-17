@@ -27,22 +27,29 @@ const RelatedVideos = () => {
 
   }, []);
 
-
-
-
   return (
-    <div className="video-grid">
-      
-      {findRelatedVideos.map((video) => (
-          <ol>
-            <li>
-              <Link to={`/videopage/${video.id.videoId}`} key={video.id.videoId}>
-                <img src={video.snippet.thumbnails.default.url} alt={video.snippet.title} />
-                <p>{video.snippet.title}</p>
-              </Link>
-            </li>
-          </ol>
-        ))}
+    <div className="video-container">
+      <div className="video-player">
+        {/* Code for the video player */}
+      </div>
+      <div className="comment-form">
+        {/* Code for the comment form */}
+      </div>
+      <div className="related-videos">
+        <h2>Related Videos</h2>
+        <div className="video-grid">
+          {findRelatedVideos.map((video) => (
+            <ul key={video.id.videoId}>
+              <li className="related-video-link">
+                <Link to={`/videopage/${video.id.videoId}`}>
+                  <img src={video.snippet.thumbnails.default.url} alt={video.snippet.title} />
+                  <p>{video.snippet.title}</p>
+                </Link>
+              </li>
+            </ul>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

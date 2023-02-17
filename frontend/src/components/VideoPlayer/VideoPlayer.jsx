@@ -12,6 +12,7 @@ const VideoPlayer = (props) => {
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         />
+        {/* <p>{props.videoID.snippet.title}</p> */}
 
       </div>
     </div>
